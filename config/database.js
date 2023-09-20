@@ -13,9 +13,9 @@ export const connectDB = async () => {
       console.error('MongoDB connection error:', error);
       process.exit(1); // Exit the application if the connection fails
     }
-  };
+};
 
-  export const db = mongoose.connection;
+export const db = mongoose.connection;
 
 
 
