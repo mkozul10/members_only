@@ -15,7 +15,7 @@ export const connectDB = async () => {
     }
 };
 
-export const db = mongoose.connection;
+export const connection = mongoose.connection;
 
 
 
