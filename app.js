@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import ejs from 'ejs';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
-import {connectDB, db} from './config/database.js';
+import { connectDB } from './config/database.js';
 import memberRoutes from './routes/members.js';
 
 
