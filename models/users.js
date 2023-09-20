@@ -26,8 +26,13 @@ const userSchema = new schema({
     salt: {
         type: String,
         required: true
-    }
-
-}, {timestamps: true})
+    },
+    messages: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Message'
+        }
+    ]
+})
 
 export const User = mongoose.model('User', userSchema);
