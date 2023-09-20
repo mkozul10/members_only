@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../partials/header.ejs') %>
+
+<body>
+    <!--Navbar start-->
+    <%- include('../partials/navbar.ejs') %>
+    <!--Navbar end-->
+    
+    <main class="form-signin w-100 m-auto">
+      <form>
+          
+            <!--Umj njega ce ici error-->
+          <p class="d-flex justify-content-center align-items-center"><b>Input passcode to become a member</b></p>
+      
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password1" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+      
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+          
+        </form>
+      </main>
+
+
+    <!--Footer start-->
+    <%- include('../partials/footer.ejs') %>
+    <!--Footer end-->
+</body>
+</html>
