@@ -9,10 +9,14 @@
     <!--Navbar end-->
     
     <main class="form-signin w-100 m-auto">
-      <form>
+      <form action="" method="post">
           
-            <!--Umj njega ce ici error-->
-          <h1 class="h3 mb-3 fw-normal d-flex justify-content-center align-items-center">Sign in</h1>
+          
+          <% if(err) { %>
+            <p style="color:red; text-align: center;"><%= msg %></p>
+          <% } else { %>
+            <h1 class="h3 mb-3 fw-normal d-flex justify-content-center align-items-center">Sign in</h1>
+          <% } %>
       
           <div class="form-floating">
             <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" required>
