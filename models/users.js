@@ -15,6 +15,10 @@ const userSchema = new schema({
         type: Boolean,
         required: true
     },
+    isAdmin: {
+        type: Boolean,
+        required: true
+    },
     username: {
         type: String,
         required: true
@@ -27,12 +31,10 @@ const userSchema = new schema({
         type: String,
         required: true
     },
-    messages: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Message'
-        }
-    ]
+    tryToBeMember:{
+        type: Boolean,
+        required: true
+    }
 })
 
 export const User = mongoose.model('User', userSchema);
