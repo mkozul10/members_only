@@ -9,10 +9,7 @@ const verifyCallback = async (username, password, cb) => {
     try {
         const user = await User.findOne({username: username});
         if(!user) return cb(null, false);
-        console.log(user);
-        console.log(password);
         const isValid = validPassword(password, user.hash, user.salt);
-        console.log(isValid);
 
         if(isValid) return cb(null, user);
         else return cb(null, false);
