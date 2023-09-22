@@ -8,15 +8,61 @@
     <%- include('./partials/navbar.ejs') %>
     <!--Navbar end-->
     <h1 style="padding: 10px 10px 10px;">Messages</h1>
-    
-    <div class="message">
-        <div class="text">TextTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsjelTextdjfhskjhfslhgusdhfkglsdjfklsj</div>
-        <div class="author">Author: Mario Kozul</div>
-        <div class="date">Date: 203210391013</div>
-        <div class="delete"><a href="#">Delete</a></div>
-    </div>
+    <% if(messages.length > 0){ %>
+        <% messages.forEach(message => { %>
+            <div class="message" data-ind="<%= message._id %>">
+                <!--Message can be seen by anyone-->
+                <div class="text"><%= message.text %></div>
+                <!--Author can be seen only by members and admins-->
+                <div class="author">
+                    <% if(authentication && (user.isAdmin || user.membership)){ %>
+                        Author: <%= message.user.name %> <%= message.user.surname %>
+                    <% } else { %>
+                        Author: Anonymous
+                    <% } %>
+                </div>
+                <!--Date can be seen only by members and admins-->
+                <div class="date">
+                    <% if(authentication && (user.isAdmin || user.membership)){ %>
+                        Date: <%= new Date(message.createdAt).toLocaleString() %>
+                    <% } else { %>
+                        Date: -
+                    <% } %>
+                </div>
+                <!--Delete can be seen only by admins-->
+                <div class="delete">
+                    <% if(authentication && (user.isAdmin || user.membership)){ %>
+                        <button class="delete-1">Delete</button>
+                    <% } else { %>
+                        ---
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <h1>There are no messages</h1>
+    <% } %>
     <!--Footer start-->
     <%- include('./partials/footer.ejs') %>
     <!--Footer end-->
+    <script>
+        async function delete_message(event){
+            if(event.target && event.target.classList.contains('delete-1')){
+                const item = event.target.parentNode.parentNode;
+                const endpoint = `/delete/${item.dataset.ind}`;
+                try{
+                    const res = await fetch(endpoint, {
+                        method: 'DELETE'
+                    })
+                    const data = await res.json();
+                    window.location.href = data.redirect;
+                }catch(err) {
+                    console.log(err);
+                }
+                
+            }
+        }
+        const a = document.addEventListener('click',delete_message);
+    </script>
 </body>
 </html>
