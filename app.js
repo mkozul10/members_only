@@ -67,16 +67,10 @@ import './config/passport.js';
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req,res,next) => {
-    console.log(req.session);
-    console.log(req.user);
-    next();
-})
-
-
-app.get('/', (req, res) => {
-    res.render('index');
-})
 
 app.use(memberRoutes);
+
+app.use((req,res) => {
+    res.render('404');
+})
 
