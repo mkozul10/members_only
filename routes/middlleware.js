@@ -4,10 +4,7 @@ export const checkUsername = async (req,res,next) => {
     try{
         const user = await User.findOne({username: req.body.username})
         if(user) res.render('members/sign-up',{err: true, msg: 'Username is already in use'});
-        else {
-            console.log(req.body);
-            next();
-        }
+        else next();
     } catch(err) {
         console.log(err);
     }
