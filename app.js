@@ -67,7 +67,6 @@ import './config/passport.js';
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(memberRoutes);
 
 app.use((req,res) => {
