@@ -1,6 +1,6 @@
 # Message app (Node.js + Express.js + Passport.js)
 
-A fully functional example project written in JavaScript, showing how to create RESTful API.
+A fully functional example project written in JavaScript, showing how to create CRUD application
 
 ## Description
 
