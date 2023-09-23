@@ -31,7 +31,7 @@
                 </div>
                 <!--Delete can be seen only by admins-->
                 <div class="delete">
-                    <% if(authentication && (user.isAdmin || user.membership)){ %>
+                    <% if(authentication && user.isAdmin){ %>
                         <button class="delete-1">Delete</button>
                     <% } else { %>
                         ---
